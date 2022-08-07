@@ -1,24 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { Breadcrumb, Layout, Menu, Row, Col, } from 'antd';
+import { BrowserRouter as Router,Routes, Route, Link } from 'react-router-dom';
+import PokemonList from './pages/pokemon-list/pokemon-list'
+import PokemonDetail from "./pages/pokemon-detail/pokemon-detail";
+
+const { Header, Content, Footer } = Layout;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Layout className="layout">
+      <Header style={{backgroundColor: '#1c80ad'}}>
+        <div style={{color: 'white', fontWeight: 'bold', fontSize: 'x-large', fontFamily: 'cursive'}}>
+          Pokemon Dex
+        </div>
+      </Header>
+      <Content style={{ padding: '50px', background: '#FFF'}}>
+        <Router>
+          <Routes>
+            <Route exact path='/' element={< PokemonList />}></Route>
+            <Route exact path='/detail' element={< PokemonDetail />}></Route>
+          </Routes>
+        </Router>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>Agus Wibawa</Footer>
+  </Layout>
   );
 }
 
